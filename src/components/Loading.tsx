@@ -12,8 +12,8 @@ const Loading = ({ percent }: { percent: number }) => {
 
   useEffect(() => {
     if (percent < 100) return;
-    let loadedTimer: ReturnType<typeof setTimeout> | null = null;
-    let isLoadedTimer: ReturnType<typeof setTimeout> | null = null;
+    let loadedTimer: ReturnType<typeof setTimeout> | undefined;
+    let isLoadedTimer: ReturnType<typeof setTimeout> | undefined;
 
     loadedTimer = setTimeout(() => {
       setLoaded(true);
@@ -23,14 +23,14 @@ const Loading = ({ percent }: { percent: number }) => {
     }, 150);
 
     return () => {
-      if (loadedTimer) clearTimeout(loadedTimer);
-      if (isLoadedTimer) clearTimeout(isLoadedTimer);
+      if (loadedTimer !== undefined) clearTimeout(loadedTimer);
+      if (isLoadedTimer !== undefined) clearTimeout(isLoadedTimer);
     };
   }, [percent]);
 
   useEffect(() => {
     if (!isLoaded) return;
-    let hideTimer: ReturnType<typeof setTimeout> | null = null;
+    let hideTimer: ReturnType<typeof setTimeout> | undefined;
     import("./utils/initialFX").then((module) => {
       setClicked(true);
       hideTimer = setTimeout(() => {
@@ -41,7 +41,7 @@ const Loading = ({ percent }: { percent: number }) => {
       }, 200);
     });
     return () => {
-      if (hideTimer) clearTimeout(hideTimer);
+      if (hideTimer !== undefined) clearTimeout(hideTimer);
     };
   }, [isLoaded, setIsLoading]);
 
@@ -107,12 +107,12 @@ export default Loading;
 export const setProgress = (setLoading: (value: number) => void) => {
   let percent: number = 0;
 
-  let interval: ReturnType<typeof setInterval> | null = null;
+  let interval: ReturnType<typeof setInterval> | undefined;
 
   const stopInterval = () => {
-    if (interval) {
+    if (interval !== undefined) {
       clearInterval(interval);
-      interval = null;
+      interval = undefined;
     }
   };
 
