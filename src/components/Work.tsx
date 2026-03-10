@@ -1,50 +1,83 @@
 import { useState, useCallback } from "react";
 import "./styles/Work.css";
-import WorkImage from "./WorkImage";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
+
+type PanelMode = "overview" | "runbook";
 
 const projects = [
   {
-    title: "Solid Starters",
-    category: "Low-Code Platform",
-    tools: "Angular, Next.js, NestJS, MongoDB",
-    image: "/images/Solidx.png",
+    title: "Reliance Foundation Hospital",
+    category: "Healthcare Data Platform",
+    tools: "Apache NiFi, Kafka, HDFS, Hive, Yarn, Ozone, Spark",
+    status: "Stable",
+    statusNote: "SLO 99.9%",
+    metrics: [
+      { label: "Pipeline", value: "HA ingestion" },
+      { label: "Data", value: "X-ray + PII filtering" },
+      { label: "Compute", value: "Spark processing" },
+      { label: "Storage", value: "HDFS + Ozone" },
+    ],
+    signals: ["Ingestion lag", "Kafka throughput", "Storage health"],
+    runbook: [
+      "Validate upstream ingestion health and queue depth",
+      "Check Kafka lag and broker status",
+      "Verify HDFS/Ozone capacity and Spark job health",
+      "Trigger replay workflow if data gaps detected",
+    ],
   },
   {
-    title: "Radix",
-    category: "E-Commerce",
-    tools: "Angular, Next.js, NestJS, CMS",
-    image: "/images/radix.png",
+    title: "Jio Smart Document Platform",
+    category: "Document Intelligence",
+    tools: "Azure Form Recognizer, PDF/Image parsing, JSON output",
+    status: "Stable",
+    statusNote: "SLO 99.8%",
+    metrics: [
+      { label: "Extraction", value: "Form Recognizer" },
+      { label: "Throughput", value: "High-volume docs" },
+      { label: "Output", value: "Structured JSON" },
+      { label: "Quality", value: "Schema validation" },
+    ],
+    signals: ["Parser latency", "Quota usage", "Schema drift"],
+    runbook: [
+      "Inspect pipeline latency and OCR queue depth",
+      "Validate Form Recognizer quota and retries",
+      "Run schema validation for critical fields",
+      "Replay failed batches with corrected mappings",
+    ],
   },
   {
-    title: "Bond Cancellation",
-    category: "Import-Export Automation",
-    tools: "Angular, Next.js, NestJS, Workflows",
-    image: "/images/bond.png",
-  },
-  {
-    title: "Sapphire",
-    category: "CRM Platform",
-    tools: "AngularJS, NestJS, PostgreSQL",
-    image: "/images/sapphire.png",
-  },
-  {
-    title: "Mpro",
-    category: "Insurance Platform",
-    tools: "React.js, Node.js, Microservices",
-    image: "/images/Maxlife.png",
+    title: "Jio Device Heartbeat",
+    category: "Large-Scale Monitoring",
+    tools: "33M+ devices, ~75B signals/day, proactive signal loss detection",
+    status: "Stable",
+    statusNote: "Zero downtime focus",
+    metrics: [
+      { label: "Devices", value: "33M+" },
+      { label: "Signals", value: "~75B/day" },
+      { label: "Alerting", value: "Proactive" },
+      { label: "Automation", value: "Signal loss guardrails" },
+    ],
+    signals: ["Signal loss", "Pipeline delay", "Regional anomalies"],
+    runbook: [
+      "Validate device ingestion and partition health",
+      "Check end-to-end lag and alert routing",
+      "Correlate regional anomalies with infra events",
+      "Automate mitigation and notify stakeholders",
+    ],
   },
 ];
 
 const Work = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [panelMode, setPanelMode] = useState<PanelMode>("overview");
 
   const goToSlide = useCallback(
     (index: number) => {
       if (isAnimating) return;
       setIsAnimating(true);
       setCurrentIndex(index);
+      setPanelMode("overview");
       setTimeout(() => setIsAnimating(false), 500);
     },
     [isAnimating]
@@ -114,8 +147,65 @@ const Work = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="carousel-image-wrapper">
-                      <WorkImage image={project.image} alt={project.title} />
+                    <div className="ops-panel" aria-live="polite">
+                      <div className="ops-panel-header">
+                        <div>
+                          <h5>Ops Console</h5>
+                          <p className="ops-subtitle">Live snapshot</p>
+                        </div>
+                        <div className="ops-tabs">
+                          <button
+                            className={`ops-tab ${panelMode === "overview" ? "ops-tab-active" : ""}`}
+                            onClick={() => setPanelMode("overview")}
+                            data-cursor="disable"
+                          >
+                            Overview
+                          </button>
+                          <button
+                            className={`ops-tab ${panelMode === "runbook" ? "ops-tab-active" : ""}`}
+                            onClick={() => setPanelMode("runbook")}
+                            data-cursor="disable"
+                          >
+                            Runbook
+                          </button>
+                        </div>
+                      </div>
+                      {panelMode === "overview" ? (
+                        <>
+                          <div className="ops-status">
+                            <span className="status-dot"></span>
+                            <span>{project.status}</span>
+                            <span className="ops-status-note">
+                              {project.statusNote}
+                            </span>
+                          </div>
+                          <div className="ops-metrics">
+                            {project.metrics.map((metric, metricIndex) => (
+                              <div className="ops-metric" key={metricIndex}>
+                                <div className="ops-metric-label">
+                                  {metric.label}
+                                </div>
+                                <div className="ops-metric-value">
+                                  {metric.value}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                          <div className="ops-signals">
+                            {project.signals.map((signal, signalIndex) => (
+                              <span className="ops-signal" key={signalIndex}>
+                                {signal}
+                              </span>
+                            ))}
+                          </div>
+                        </>
+                      ) : (
+                        <ol className="ops-runbook">
+                          {project.runbook.map((step, stepIndex) => (
+                            <li key={stepIndex}>{step}</li>
+                          ))}
+                        </ol>
+                      )}
                     </div>
                   </div>
                 </div>

@@ -1,0 +1,6 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'>
+  <rect width='512' height='512' rx='64' fill='#0b1220'/>
+  <rect x='32' y='32' width='448' height='448' rx='48' fill='#0f172a' stroke='#f59e0b' stroke-width='6'/>
+  <text x='256' y='280' text-anchor='middle' font-family='Arial, sans-serif' font-size='60' fill='#e5e7eb' letter-spacing='2'>AWS</text>
+  <text x='256' y='350' text-anchor='middle' font-family='Arial, sans-serif' font-size='26' fill='#f59e0b'>Cloud</text>
+</svg>
