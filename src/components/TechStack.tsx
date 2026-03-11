@@ -40,7 +40,7 @@ const BOUNDS = {
   y: 18,
   z: 22,
   thickness: 0.6,
-  centerY: -2,
+  centerY: 6,
   centerZ: 0,
 };
 
