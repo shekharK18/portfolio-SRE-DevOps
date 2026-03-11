@@ -52,7 +52,7 @@ function SphereGeo({
 }: SphereProps) {
   const api = useRef<RapierRigidBody | null>(null);
   const localMaterial = useMemo(() => material.clone(), [material]);
-  const attractor = useMemo(() => new THREE.Vector3(0, -12, 0), []);
+  const attractor = useMemo(() => new THREE.Vector3(0, -8, 0), []);
 
   useFrame((_state, delta) => {
     if (!isActive) return;
@@ -63,9 +63,9 @@ function SphereGeo({
       .normalize()
       .multiply(
         new THREE.Vector3(
-          -12 * delta * scale,
-          -18 * delta * scale,
-          -12 * delta * scale
+          -22 * delta * scale,
+          -32 * delta * scale,
+          -22 * delta * scale
         )
       );
 
@@ -74,10 +74,10 @@ function SphereGeo({
 
   return (
     <RigidBody
-      linearDamping={0.55}
-      angularDamping={0.1}
+      linearDamping={0.4}
+      angularDamping={0.08}
       friction={0.2}
-      position={[r(16), r(10) - 12, r(12)]}
+      position={[r(16), r(10) - 8, r(12)]}
       ref={api}
       colliders={false}
     >
@@ -121,7 +121,7 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
         (pointer.y * viewport.height) / 2,
         0
       ),
-      0.65
+      0.85
     );
     ref.current?.setNextKinematicTranslation(targetVec);
   });
@@ -133,7 +133,7 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
       colliders={false}
       ref={ref}
     >
-      <BallCollider args={[4]} />
+      <BallCollider args={[5]} />
     </RigidBody>
   );
 }
@@ -141,10 +141,10 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
 const Bounds = () => {
   const bounds = {
     x: 14,
-    y: 9,
+    y: 8,
     z: 11,
     thickness: 0.6,
-    centerY: -12,
+    centerY: -8,
     centerZ: 0,
   };
 
@@ -258,10 +258,10 @@ const TechStack = () => {
           antialias: false,
           powerPreference: "high-performance",
         }}
-        camera={{ position: [0, 8, 24], fov: 32.5, near: 1, far: 100 }}
+        camera={{ position: [0, 0, 22], fov: 32.5, near: 1, far: 100 }}
         onCreated={(state) => {
           state.gl.toneMappingExposure = 1.3;
-          state.camera.lookAt(0, -12, 0);
+          state.camera.lookAt(0, -8, 0);
           state.camera.updateProjectionMatrix();
         }}
         className="tech-canvas"
