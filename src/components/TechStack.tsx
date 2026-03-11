@@ -6,6 +6,7 @@ import {
   BallCollider,
   Physics,
   RigidBody,
+  CuboidCollider,
   CylinderCollider,
   RapierRigidBody,
 } from "@react-three/rapier";
@@ -30,7 +31,7 @@ const textures = techIcons.map((icon) => textureLoader.load(icon.src));
 
 const sphereGeometry = new THREE.SphereGeometry(1.8, 28, 28);
 
-const spheres = [...Array(24)].map(() => ({
+const spheres = [...Array(22)].map(() => ({
   scale: [1.3, 1.4, 1.5, 1.6, 1.7][Math.floor(Math.random() * 5)],
 }));
 
@@ -60,9 +61,9 @@ function SphereGeo({
       .normalize()
       .multiply(
         new THREE.Vector3(
-          -45 * delta * scale,
-          -90 * delta * scale,
-          -45 * delta * scale
+          -18 * delta * scale,
+          -28 * delta * scale,
+          -18 * delta * scale
         )
       );
 
@@ -74,7 +75,7 @@ function SphereGeo({
       linearDamping={0.75}
       angularDamping={0.15}
       friction={0.2}
-      position={[r(26), r(26) - 8, r(26) - 8]}
+      position={[r(22), r(16) - 2, r(18)]}
       ref={api}
       colliders={false}
     >
@@ -130,10 +131,48 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
       colliders={false}
       ref={ref}
     >
-      <BallCollider args={[3]} />
+      <BallCollider args={[3.2]} />
     </RigidBody>
   );
 }
+
+const Bounds = () => {
+  const bounds = {
+    x: 18,
+    y: 10,
+    z: 14,
+    thickness: 0.6,
+  };
+
+  return (
+    <RigidBody type="fixed" colliders={false}>
+      <CuboidCollider
+        args={[bounds.x, bounds.thickness, bounds.z]}
+        position={[0, -bounds.y, 0]}
+      />
+      <CuboidCollider
+        args={[bounds.x, bounds.thickness, bounds.z]}
+        position={[0, bounds.y, 0]}
+      />
+      <CuboidCollider
+        args={[bounds.thickness, bounds.y, bounds.z]}
+        position={[-bounds.x, 0, 0]}
+      />
+      <CuboidCollider
+        args={[bounds.thickness, bounds.y, bounds.z]}
+        position={[bounds.x, 0, 0]}
+      />
+      <CuboidCollider
+        args={[bounds.x, bounds.y, bounds.thickness]}
+        position={[0, 0, -bounds.z]}
+      />
+      <CuboidCollider
+        args={[bounds.x, bounds.y, bounds.thickness]}
+        position={[0, 0, bounds.z]}
+      />
+    </RigidBody>
+  );
+};
 
 const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
@@ -201,7 +240,7 @@ const TechStack = () => {
           antialias: false,
           powerPreference: "high-performance",
         }}
-        camera={{ position: [0, 0, 16], fov: 32.5, near: 1, far: 100 }}
+        camera={{ position: [0, 0, 18], fov: 32.5, near: 1, far: 100 }}
         onCreated={(state) => (state.gl.toneMappingExposure = 1.3)}
         className="tech-canvas"
       >
@@ -214,6 +253,7 @@ const TechStack = () => {
         />
         <directionalLight position={[0, 5, -4]} intensity={1.6} />
         <Physics gravity={[0, 0, 0]}>
+          <Bounds />
           <Pointer isActive={isActive} />
           {spheres.map((props, i) => (
             <SphereGeo
