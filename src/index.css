@@ -109,12 +109,12 @@ body {
   overflow: visible;
   height: auto;
   min-height: var(--vh);
-  margin: 60px auto 40px;
-  padding: 20px 0 60px;
+  margin: 50px auto 20px;
+  padding: 10px 0 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
 }
 
 .techstack h2 {
@@ -130,8 +130,8 @@ body {
 }
 
 .tech-canvas {
-  height: 80vh;
-  min-height: 520px;
+  height: 65vh;
+  min-height: 420px;
   display: block;
   margin: 0 auto;
 }
@@ -209,9 +209,9 @@ body {
   .techstack {
     height: auto;
     min-height: 60vh;
-    margin: 40px auto 30px;
-    padding: 20px 0 40px;
-    gap: 12px;
+    margin: 30px auto 20px;
+    padding: 10px 0 30px;
+    gap: 8px;
   }
 
   .techstack h2 {
@@ -222,8 +222,8 @@ body {
   }
 
   .tech-canvas {
-    height: 70vh;
-    min-height: 420px;
+    height: 55vh;
+    min-height: 340px;
     margin-bottom: 0;
   }
 
