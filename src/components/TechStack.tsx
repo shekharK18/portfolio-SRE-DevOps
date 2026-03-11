@@ -133,7 +133,7 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
       colliders={false}
       ref={ref}
     >
-      <BallCollider args={[5]} />
+      <BallCollider args={[2]} />
     </RigidBody>
   );
 }
