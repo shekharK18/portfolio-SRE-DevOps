@@ -35,6 +35,15 @@ const spheres = [...Array(22)].map(() => ({
   scale: [1.3, 1.4, 1.5, 1.6, 1.7][Math.floor(Math.random() * 5)],
 }));
 
+const BOUNDS = {
+  x: 30,
+  y: 18,
+  z: 22,
+  thickness: 0.6,
+  centerY: -2,
+  centerZ: 0,
+};
+
 type SphereProps = {
   vec?: THREE.Vector3;
   scale: number;
@@ -52,7 +61,10 @@ function SphereGeo({
 }: SphereProps) {
   const api = useRef<RapierRigidBody | null>(null);
   const localMaterial = useMemo(() => material.clone(), [material]);
-  const attractor = useMemo(() => new THREE.Vector3(0, -8, 0), []);
+  const attractor = useMemo(
+    () => new THREE.Vector3(0, BOUNDS.centerY, BOUNDS.centerZ),
+    []
+  );
 
   useFrame((_state, delta) => {
     if (!isActive) return;
@@ -77,7 +89,11 @@ function SphereGeo({
       linearDamping={0.28}
       angularDamping={0.05}
       friction={0.12}
-      position={[r(34), r(26) - 8, r(26)]}
+      position={[
+        r(BOUNDS.x * 1.2),
+        r(BOUNDS.y * 1.2) + BOUNDS.centerY,
+        r(BOUNDS.z * 1.2),
+      ]}
       ref={api}
       colliders={false}
     >
@@ -118,7 +134,7 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
     const targetVec = vec.lerp(
       new THREE.Vector3(
         (pointer.x * viewport.width) / 2,
-        (pointer.y * viewport.height) / 2,
+        (pointer.y * viewport.height) / 2 + BOUNDS.centerY,
         0
       ),
       0.9
@@ -139,40 +155,31 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
 }
 
 const Bounds = () => {
-  const bounds = {
-    x: 30,
-    y: 16,
-    z: 22,
-    thickness: 0.6,
-    centerY: -8,
-    centerZ: 0,
-  };
-
   return (
     <RigidBody type="fixed" colliders={false}>
       <CuboidCollider
-        args={[bounds.x, bounds.thickness, bounds.z]}
-        position={[0, bounds.centerY - bounds.y, bounds.centerZ]}
+        args={[BOUNDS.x, BOUNDS.thickness, BOUNDS.z]}
+        position={[0, BOUNDS.centerY - BOUNDS.y, BOUNDS.centerZ]}
       />
       <CuboidCollider
-        args={[bounds.x, bounds.thickness, bounds.z]}
-        position={[0, bounds.centerY + bounds.y, bounds.centerZ]}
+        args={[BOUNDS.x, BOUNDS.thickness, BOUNDS.z]}
+        position={[0, BOUNDS.centerY + BOUNDS.y, BOUNDS.centerZ]}
       />
       <CuboidCollider
-        args={[bounds.thickness, bounds.y, bounds.z]}
-        position={[-bounds.x, bounds.centerY, bounds.centerZ]}
+        args={[BOUNDS.thickness, BOUNDS.y, BOUNDS.z]}
+        position={[-BOUNDS.x, BOUNDS.centerY, BOUNDS.centerZ]}
       />
       <CuboidCollider
-        args={[bounds.thickness, bounds.y, bounds.z]}
-        position={[bounds.x, bounds.centerY, bounds.centerZ]}
+        args={[BOUNDS.thickness, BOUNDS.y, BOUNDS.z]}
+        position={[BOUNDS.x, BOUNDS.centerY, BOUNDS.centerZ]}
       />
       <CuboidCollider
-        args={[bounds.x, bounds.y, bounds.thickness]}
-        position={[0, bounds.centerY, bounds.centerZ - bounds.z]}
+        args={[BOUNDS.x, BOUNDS.y, BOUNDS.thickness]}
+        position={[0, BOUNDS.centerY, BOUNDS.centerZ - BOUNDS.z]}
       />
       <CuboidCollider
-        args={[bounds.x, bounds.y, bounds.thickness]}
-        position={[0, bounds.centerY, bounds.centerZ + bounds.z]}
+        args={[BOUNDS.x, BOUNDS.y, BOUNDS.thickness]}
+        position={[0, BOUNDS.centerY, BOUNDS.centerZ + BOUNDS.z]}
       />
     </RigidBody>
   );
@@ -261,7 +268,7 @@ const TechStack = () => {
         camera={{ position: [0, 0, 32], fov: 42, near: 1, far: 170 }}
         onCreated={(state) => {
           state.gl.toneMappingExposure = 1.3;
-          state.camera.lookAt(0, -8, 0);
+          state.camera.lookAt(0, BOUNDS.centerY, 0);
           state.camera.updateProjectionMatrix();
         }}
         className="tech-canvas"
