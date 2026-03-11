@@ -152,6 +152,7 @@ body {
   gap: 8px;
   padding: 12px 10px;
   border-radius: 12px;
+  min-height: 78px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: linear-gradient(160deg, rgba(12, 18, 30, 0.85), rgba(6, 9, 16, 0.7));
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
@@ -205,8 +206,8 @@ body {
   background: linear-gradient(160deg, rgba(12, 18, 30, 0.85), rgba(6, 9, 16, 0.7));
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: #d7dce5;
-  transition: transform 0.25s ease, box-shadow 0.25s ease,
-    border-color 0.25s ease, color 0.25s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    border-color 0.3s ease, background 0.3s ease;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
@@ -214,7 +215,7 @@ body {
   transform: translateY(-2px);
   border-color: rgba(94, 234, 212, 0.55);
   color: #f3f6fb;
-  box-shadow: 0 0 16px rgba(94, 234, 212, 0.2),
+  box-shadow: 0 0 20px rgba(94, 234, 212, 0.2),
     inset 0 0 0 1px rgba(94, 234, 212, 0.25);
   background: linear-gradient(160deg, rgba(14, 24, 42, 0.95), rgba(8, 12, 22, 0.8));
 }
