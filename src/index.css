@@ -130,10 +130,14 @@ body {
 }
 
 .tech-canvas {
-  height: 70vh;
-  min-height: 520px;
+  height: 75vh;
+  min-height: 560px;
   display: block;
   margin: 0 auto;
+}
+
+.techstack + .education-section {
+  margin-top: clamp(-160px, -12vh, -100px);
 }
 
 .techstack-legend {
@@ -222,9 +226,13 @@ body {
   }
 
   .tech-canvas {
-    height: 55vh;
-    min-height: 360px;
+    height: 60vh;
+    min-height: 380px;
     margin-bottom: 0;
+  }
+
+  .techstack + .education-section {
+    margin-top: clamp(-120px, -9vh, -80px);
   }
 
   .techstack-legend {

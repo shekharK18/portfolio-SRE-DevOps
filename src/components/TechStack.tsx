@@ -77,7 +77,7 @@ function SphereGeo({
       linearDamping={0.28}
       angularDamping={0.05}
       friction={0.12}
-      position={[r(30), r(22) - 8, r(24)]}
+      position={[r(34), r(26) - 8, r(26)]}
       ref={api}
       colliders={false}
     >
@@ -140,9 +140,9 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
 
 const Bounds = () => {
   const bounds = {
-    x: 26,
-    y: 14,
-    z: 20,
+    x: 30,
+    y: 16,
+    z: 22,
     thickness: 0.6,
     centerY: -8,
     centerZ: 0,
@@ -258,7 +258,7 @@ const TechStack = () => {
           antialias: false,
           powerPreference: "high-performance",
         }}
-        camera={{ position: [0, 0, 30], fov: 42, near: 1, far: 160 }}
+        camera={{ position: [0, 0, 32], fov: 42, near: 1, far: 170 }}
         onCreated={(state) => {
           state.gl.toneMappingExposure = 1.3;
           state.camera.lookAt(0, -8, 0);
