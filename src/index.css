@@ -133,9 +133,9 @@ body {
 
 .techstack-legend {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 18px;
-  width: min(900px, 90%);
+  width: min(1000px, 92%);
   margin: 0 auto 40px;
   position: relative;
   z-index: 1;
@@ -173,6 +173,27 @@ body {
   box-shadow: 0 0 24px rgba(94, 234, 212, 0.2);
 }
 
+.techstack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  width: min(1000px, 92%);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.techstack-tags span {
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #d1d5db;
+}
+
 @media screen and (min-width: 768px) {
   body {
     --cWidth: 94%;
@@ -201,7 +222,11 @@ body {
   }
 
   .techstack-legend {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     margin-bottom: 20px;
+  }
+
+  .techstack-tags {
+    justify-content: flex-start;
   }
 }

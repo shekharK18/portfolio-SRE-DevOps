@@ -20,13 +20,18 @@ const techIcons = [
   { src: "/images/ansible.svg", label: "Ansible" },
   { src: "/images/docker.svg", label: "Docker" },
   { src: "/images/kubernetes.svg", label: "Kubernetes" },
+  { src: "/images/jenkins.svg", label: "Jenkins" },
+  { src: "/images/linux.svg", label: "Linux" },
+  { src: "/images/prometheus.svg", label: "Prometheus" },
+  { src: "/images/mysql.webp", label: "MySQL" },
+  { src: "/images/mongo.webp", label: "MongoDB" },
 ];
 const textures = techIcons.map((icon) => textureLoader.load(icon.src));
 
-const sphereGeometry = new THREE.SphereGeometry(1, 22, 22);
+const sphereGeometry = new THREE.SphereGeometry(1.2, 24, 24);
 
-const spheres = [...Array(18)].map(() => ({
-  scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
+const spheres = [...Array(24)].map(() => ({
+  scale: [1.0, 1.1, 1.2, 1.3, 1.4][Math.floor(Math.random() * 5)],
 }));
 
 type SphereProps = {
@@ -69,7 +74,7 @@ function SphereGeo({
       linearDamping={0.75}
       angularDamping={0.15}
       friction={0.2}
-      position={[r(20), r(20) - 25, r(20) - 10]}
+      position={[r(22), r(22) - 25, r(22) - 10]}
       ref={api}
       colliders={false}
     >
@@ -125,13 +130,24 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
       colliders={false}
       ref={ref}
     >
-      <BallCollider args={[2]} />
+      <BallCollider args={[2.4]} />
     </RigidBody>
   );
 }
 
 const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
+  const extraTags = [
+    "Azure DevOps",
+    "Git",
+    "Grafana",
+    "Azure Monitor",
+    "AWS CloudWatch",
+    "KQL",
+    "Python",
+    "Shell Scripting",
+    "Aerospike",
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -220,6 +236,11 @@ const TechStack = () => {
             <img src={icon.src} alt={icon.label} loading="lazy" />
             <span>{icon.label}</span>
           </div>
+        ))}
+      </div>
+      <div className="techstack-tags">
+        {extraTags.map((tag) => (
+          <span key={tag}>{tag}</span>
         ))}
       </div>
     </div>
