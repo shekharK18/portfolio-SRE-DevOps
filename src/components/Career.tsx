@@ -4,10 +4,7 @@ const Career = () => {
   return (
     <div className="career-section section-container">
       <div className="career-container">
-        <h2>
-          My career <span>&</span>
-          <br /> experience
-        </h2>
+        <h2>Experience</h2>
         <div className="career-info">
           <div className="career-timeline">
             <div className="career-dot"></div>
@@ -26,19 +23,6 @@ const Career = () => {
               improvements. Building observability with Prometheus, Grafana, and
               cloud monitoring, and supporting CI/CD with Jenkins, Git, and
               Terraform-based IaC.
-            </p>
-          </div>
-          <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>B.Tech, Electronics & Communication</h4>
-                <h5>Haldia Institute of Technology</h5>
-              </div>
-              <h3>2019 - 2023</h3>
-            </div>
-            <p>
-              Graduated with 8.70 GPA (82.65%). Focused on systems, networking,
-              and automation fundamentals that support production operations.
             </p>
           </div>
         </div>

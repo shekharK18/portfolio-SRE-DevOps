@@ -8,7 +8,7 @@
   opacity: 1;
   height: auto;
   margin: auto;
-  margin-bottom: 250px;
+  margin-bottom: 160px;
   padding: 120px 0px;
 }
 
@@ -178,10 +178,9 @@
 
 @media only screen and (max-width: 1025px) {
   .career-section {
-    padding: 70px 0px;
-    padding-top: 220px;
-    margin-top: -200px;
-    margin-bottom: 0;
+    padding: 80px 0px;
+    margin-top: 0;
+    margin-bottom: 40px;
   }
 }
 
@@ -234,8 +233,8 @@
   }
 
   .career-section {
-    padding-top: 90px;
-    margin-top: -70px;
+    padding-top: 70px;
+    margin-top: 0;
 
     align-items: start;
     place-items: inherit;

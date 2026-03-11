@@ -20,11 +20,6 @@ const Contact = () => {
                 +91 87890 71577
               </a>
             </p>
-            <h4>Education</h4>
-            <p>
-              B.Tech in Electronics & Communication, Haldia Institute of
-              Technology (2019-2023)
-            </p>
           </div>
           <div className="contact-box">
             <h4>Social</h4>
