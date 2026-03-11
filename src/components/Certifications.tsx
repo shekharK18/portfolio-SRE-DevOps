@@ -2,6 +2,7 @@ import "./styles/Certifications.css";
 
 const certifications = [
   "Microsoft Certified: Azure Fundamentals (AZ-900)",
+  "ITIL 4 Foundation",
   "Apache Airflow Fundamentals (Astronomer)",
   "DevOps Foundations (LinkedIn Learning)",
   "Databricks Fundamentals (Databricks Academy)",
