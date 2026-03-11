@@ -188,15 +188,42 @@ const Bounds = () => {
 const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
   const extraTags = [
-    "Azure DevOps",
-    "Git",
-    "Grafana",
-    "Azure Monitor",
-    "AWS CloudWatch",
-    "KQL",
-    "Python",
-    "Shell Scripting",
-    "Aerospike",
+    {
+      label: "Azure DevOps",
+      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/azure-devops.svg",
+    },
+    {
+      label: "Git",
+      icon: "https://api.iconify.design/simple-icons:git.svg?color=%23ffffff",
+    },
+    {
+      label: "Grafana",
+      icon: "https://api.iconify.design/simple-icons:grafana.svg?color=%23ffffff",
+    },
+    {
+      label: "Azure Monitor",
+      icon: "https://www.azureicons.com/static/images/icons/Management-and-Governance/svg/Monitor.svg",
+    },
+    {
+      label: "AWS CloudWatch",
+      icon: "https://www.awsicon.com/static/images/Service-Icons/Management-Governance/64/svg/CloudWatch.svg",
+    },
+    {
+      label: "KQL",
+      icon: "https://api.iconify.design/simple-icons:kibana.svg?color=%23ffffff",
+    },
+    {
+      label: "Python",
+      icon: "https://api.iconify.design/simple-icons:python.svg?color=%23ffffff",
+    },
+    {
+      label: "Shell Scripting",
+      icon: "https://api.iconify.design/simple-icons:gnubash.svg?color=%23ffffff",
+    },
+    {
+      label: "Aerospike",
+      icon: "https://upload.wikimedia.org/wikipedia/commons/9/92/Aerospike_logo_2012.svg",
+    },
   ];
 
   useEffect(() => {
@@ -252,7 +279,10 @@ const TechStack = () => {
       </div>
       <div className="techstack-tags">
         {extraTags.map((tag) => (
-          <span key={tag}>{tag}</span>
+          <div className="techstack-tag-card" key={tag.label}>
+            <img src={tag.icon} alt={`${tag.label} logo`} loading="lazy" />
+            <span>{tag.label}</span>
+          </div>
         ))}
       </div>
 
