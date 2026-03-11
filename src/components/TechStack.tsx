@@ -121,7 +121,7 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
         (pointer.y * viewport.height) / 2,
         0
       ),
-      0.2
+      0.4
     );
     ref.current?.setNextKinematicTranslation(targetVec);
   });
