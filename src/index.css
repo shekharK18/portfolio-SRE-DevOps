@@ -130,8 +130,9 @@ body {
 }
 
 .tech-canvas {
-  height: 75vh;
-  min-height: 560px;
+  height: 60vh;
+  min-height: 420px;
+  max-height: 520px;
   display: block;
   margin: 0 auto;
 }
@@ -222,8 +223,9 @@ body {
   }
 
   .tech-canvas {
-    height: 60vh;
-    min-height: 380px;
+    height: 48vh;
+    min-height: 320px;
+    max-height: 420px;
     margin-bottom: 0;
   }
 

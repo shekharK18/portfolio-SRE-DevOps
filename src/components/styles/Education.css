@@ -1,6 +1,6 @@
 .education-section {
   margin: auto;
-  padding: 60px 0;
+  padding: 40px 0 60px;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -133,7 +133,7 @@
 
 @media only screen and (max-width: 900px) {
   .education-section {
-    padding: 50px 0;
+    padding: 40px 0 50px;
   }
 
   .education-section h2 {
