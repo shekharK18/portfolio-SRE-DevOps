@@ -29,6 +29,31 @@ const techIcons = [
 ];
 const textures = techIcons.map((icon) => textureLoader.load(icon.src));
 
+const techCards = [
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/azure.svg", label: "Azure" },
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/aws.svg", label: "AWS" },
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/azure-vnet.svg", label: "Azure VNet" },
+  { src: "https://www.awsicon.com/static/images/Service-Icons/Networking-Content-Delivery/64/svg/Virtual-Private-Cloud.svg", label: "AWS VPC" },
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/terraform.svg", label: "Terraform" },
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/ansible.svg", label: "Ansible" },
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/docker.svg", label: "Docker" },
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/kubernetes.svg", label: "Kubernetes" },
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/jenkins.svg", label: "Jenkins" },
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/linux.svg", label: "Linux" },
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/prometheus.svg", label: "Prometheus" },
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/mysql.svg", label: "MySQL" },
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/mongodb.svg", label: "MongoDB" },
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/azure-devops.svg", label: "Azure DevOps" },
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/git.svg", label: "Git" },
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/grafana.svg", label: "Grafana" },
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/azure-monitor.svg", label: "Azure Monitor" },
+  { src: "https://www.awsicon.com/static/images/Service-Icons/Management-Governance/64/svg/CloudWatch.svg", label: "AWS CloudWatch" },
+  { src: "https://cloud-icons.onemodel.app/azure/analytics/10145-icon-service-Azure-Data-Explorer-Clusters.svg", label: "KQL" },
+  { src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/python.svg", label: "Python" },
+  { src: "https://cdn.simpleicons.org/gnubash/FFFFFF", label: "Shell Scripting" },
+  { src: "https://upload.wikimedia.org/wikipedia/commons/9/92/Aerospike_logo_2012.svg", label: "Aerospike" },
+];
+
 const sphereGeometry = new THREE.SphereGeometry(1.8, 28, 28);
 
 const spheres = [...Array(22)].map(() => ({
@@ -187,45 +212,6 @@ const Bounds = () => {
 
 const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
-  const extraTags = [
-    {
-      label: "Azure DevOps",
-      src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/azure-devops.svg",
-    },
-    {
-      label: "Git",
-      src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/git.svg",
-    },
-    {
-      label: "Grafana",
-      src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/grafana.svg",
-    },
-    {
-      label: "Azure Monitor",
-      src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/azure-monitor.svg",
-    },
-    {
-      label: "AWS CloudWatch",
-      src: "https://www.awsicon.com/static/images/Service-Icons/Management-Governance/64/svg/CloudWatch.svg",
-    },
-    {
-      label: "KQL",
-      src: "https://cloud-icons.onemodel.app/azure/analytics/10145-icon-service-Azure-Data-Explorer-Clusters.svg",
-    },
-    {
-      label: "Python",
-      src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/python.svg",
-    },
-    {
-      label: "Shell Scripting",
-      src: "https://cdn.simpleicons.org/gnubash/FFFFFF",
-    },
-    {
-      label: "Aerospike",
-      src: "https://upload.wikimedia.org/wikipedia/commons/9/92/Aerospike_logo_2012.svg",
-    },
-  ];
-  const allTechCards = [...techIcons, ...extraTags];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -271,7 +257,7 @@ const TechStack = () => {
       <h2> My Techstack</h2>
 
       <div className="techstack-legend">
-        {allTechCards.map((icon) => (
+        {techCards.map((icon) => (
           <div className="techstack-legend-item" key={icon.label}>
             <img src={icon.src} alt={icon.label} loading="lazy" />
             <span>{icon.label}</span>
