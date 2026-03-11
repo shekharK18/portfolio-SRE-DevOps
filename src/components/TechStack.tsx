@@ -194,15 +194,15 @@ const TechStack = () => {
     },
     {
       label: "Git",
-      icon: "https://api.iconify.design/simple-icons:git.svg?color=%23ffffff",
+      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/git.svg",
     },
     {
       label: "Grafana",
-      icon: "https://api.iconify.design/simple-icons:grafana.svg?color=%23ffffff",
+      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/grafana.svg",
     },
     {
       label: "Azure Monitor",
-      icon: "https://www.azureicons.com/static/images/icons/Management-and-Governance/svg/Monitor.svg",
+      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/azure-monitor.svg",
     },
     {
       label: "AWS CloudWatch",
@@ -214,11 +214,11 @@ const TechStack = () => {
     },
     {
       label: "Python",
-      icon: "https://api.iconify.design/simple-icons:python.svg?color=%23ffffff",
+      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/python.svg",
     },
     {
       label: "Shell Scripting",
-      icon: "https://api.iconify.design/simple-icons:gnubash.svg?color=%23ffffff",
+      icon: "https://cdn.simpleicons.org/gnubash/FFFFFF",
     },
     {
       label: "Aerospike",
