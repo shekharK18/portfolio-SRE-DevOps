@@ -182,23 +182,28 @@ body {
 }
 
 .techstack-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
   justify-content: center;
   width: min(1000px, 92%);
-  margin: 0 auto 6px;
+  margin: 0 auto 12px;
   position: relative;
   z-index: 1;
 }
 
 .techstack-tags span {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.6px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: linear-gradient(160deg, rgba(12, 18, 30, 0.9), rgba(6, 9, 16, 0.8));
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 14px 12px;
+  border-radius: 12px;
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(160deg, rgba(12, 18, 30, 0.85), rgba(6, 9, 16, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: #d7dce5;
   transition: transform 0.25s ease, box-shadow 0.25s ease,
     border-color 0.25s ease, color 0.25s ease;
@@ -211,6 +216,7 @@ body {
   color: #f3f6fb;
   box-shadow: 0 0 16px rgba(94, 234, 212, 0.2),
     inset 0 0 0 1px rgba(94, 234, 212, 0.25);
+  background: linear-gradient(160deg, rgba(14, 24, 42, 0.95), rgba(8, 12, 22, 0.8));
 }
 
 @media screen and (min-width: 768px) {
@@ -246,6 +252,6 @@ body {
   }
 
   .techstack-tags {
-    justify-content: flex-start;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   }
 }
