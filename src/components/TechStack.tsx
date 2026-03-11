@@ -52,12 +52,14 @@ function SphereGeo({
 }: SphereProps) {
   const api = useRef<RapierRigidBody | null>(null);
   const localMaterial = useMemo(() => material.clone(), [material]);
+  const attractor = useMemo(() => new THREE.Vector3(0, -4, 0), []);
 
   useFrame((_state, delta) => {
     if (!isActive) return;
     delta = Math.min(0.1, delta);
     const impulse = vec
       .copy(api.current!.translation())
+      .sub(attractor)
       .normalize()
       .multiply(
         new THREE.Vector3(
@@ -75,7 +77,7 @@ function SphereGeo({
       linearDamping={0.75}
       angularDamping={0.15}
       friction={0.2}
-      position={[r(22), r(16) - 2, r(18)]}
+      position={[r(22), r(16) - 6, r(18)]}
       ref={api}
       colliders={false}
     >
@@ -139,36 +141,37 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
 const Bounds = () => {
   const bounds = {
     x: 18,
-    y: 10,
+    y: 12,
     z: 14,
     thickness: 0.6,
+    centerY: -4,
   };
 
   return (
     <RigidBody type="fixed" colliders={false}>
       <CuboidCollider
         args={[bounds.x, bounds.thickness, bounds.z]}
-        position={[0, -bounds.y, 0]}
+        position={[0, bounds.centerY - bounds.y, 0]}
       />
       <CuboidCollider
         args={[bounds.x, bounds.thickness, bounds.z]}
-        position={[0, bounds.y, 0]}
+        position={[0, bounds.centerY + bounds.y, 0]}
       />
       <CuboidCollider
         args={[bounds.thickness, bounds.y, bounds.z]}
-        position={[-bounds.x, 0, 0]}
+        position={[-bounds.x, bounds.centerY, 0]}
       />
       <CuboidCollider
         args={[bounds.thickness, bounds.y, bounds.z]}
-        position={[bounds.x, 0, 0]}
+        position={[bounds.x, bounds.centerY, 0]}
       />
       <CuboidCollider
         args={[bounds.x, bounds.y, bounds.thickness]}
-        position={[0, 0, -bounds.z]}
+        position={[0, bounds.centerY, -bounds.z]}
       />
       <CuboidCollider
         args={[bounds.x, bounds.y, bounds.thickness]}
-        position={[0, 0, bounds.z]}
+        position={[0, bounds.centerY, bounds.z]}
       />
     </RigidBody>
   );
@@ -240,7 +243,7 @@ const TechStack = () => {
           antialias: false,
           powerPreference: "high-performance",
         }}
-        camera={{ position: [0, 0, 18], fov: 32.5, near: 1, far: 100 }}
+        camera={{ position: [0, 3, 18], fov: 32.5, near: 1, far: 100 }}
         onCreated={(state) => (state.gl.toneMappingExposure = 1.3)}
         className="tech-canvas"
       >
