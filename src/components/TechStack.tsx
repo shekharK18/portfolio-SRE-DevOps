@@ -258,7 +258,7 @@ const TechStack = () => {
           antialias: false,
           powerPreference: "high-performance",
         }}
-        camera={{ position: [0, 3, 24], fov: 32.5, near: 1, far: 100 }}
+        camera={{ position: [0, 8, 24], fov: 32.5, near: 1, far: 100 }}
         onCreated={(state) => {
           state.gl.toneMappingExposure = 1.3;
           state.camera.lookAt(0, -12, 0);
