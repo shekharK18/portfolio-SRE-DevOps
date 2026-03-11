@@ -110,25 +110,28 @@ body {
   height: auto;
   min-height: var(--vh);
   margin: auto;
-  margin-top: 50px;
-  margin-bottom: -40px;
-  padding-bottom: 60px;
+  margin-top: 120px;
+  margin-bottom: 80px;
+  padding: 40px 0 80px;
 }
 
 .techstack h2 {
   font-size: 80px;
   text-align: center;
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 120px;
+  top: 0;
   left: 0;
   font-weight: 400;
   text-transform: uppercase;
+  margin: 0 0 40px;
 }
 
 .tech-canvas {
   height: 70vh;
   min-height: 420px;
+  display: block;
+  margin: 0 auto 40px;
 }
 
 .techstack-legend {
@@ -204,21 +207,22 @@ body {
   .techstack {
     height: auto;
     min-height: 60vh;
-    margin-top: 20px;
-    margin-bottom: 0;
-    padding: 60px 0 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 40px 0 50px;
   }
 
   .techstack h2 {
     font-size: 40px;
     position: relative;
     top: 0;
-    margin: 0 0 20px;
+    margin: 0 0 24px;
   }
 
   .tech-canvas {
     height: 60vh;
     min-height: 320px;
+    margin-bottom: 24px;
   }
 
   .techstack-legend {
