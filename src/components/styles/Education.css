@@ -12,6 +12,12 @@
   margin: 0 0 50px;
 }
 
+.education-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
 .education-card {
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: linear-gradient(140deg, rgba(15, 23, 42, 0.6), rgba(10, 10, 10, 0.35));
@@ -19,7 +25,7 @@
   padding: 28px 32px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 }
 
 .education-main {
@@ -48,12 +54,13 @@
   opacity: 0.7;
 }
 
-.education-card p {
-  margin: 0;
-  font-size: 16px;
+.education-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 15px;
   font-weight: 300;
   color: #adacac;
-  line-height: 1.6;
 }
 
 @media only screen and (max-width: 1400px) {
@@ -84,5 +91,9 @@
 
   .education-date {
     font-size: 18px;
+  }
+
+  .education-meta {
+    font-size: 14px;
   }
 }

@@ -17,13 +17,32 @@ const Career = () => {
               </div>
               <h3>Dec 2023 - Present</h3>
             </div>
-            <p>
-              Managing Azure, AWS, and on-prem infrastructure for production data
-              platforms. Leading incident response, RCA, and reliability
-              improvements. Building observability with Prometheus, Grafana, and
-              cloud monitoring, and supporting CI/CD with Jenkins, Git, and
-              Terraform-based IaC.
-            </p>
+            <ul className="career-bullets">
+              <li>
+                Operate large-scale cloud and on-prem infrastructure supporting
+                high-availability production systems.
+              </li>
+              <li>
+                Build and maintain CI/CD pipelines with Jenkins, Git, and Azure
+                DevOps for reliable deployments.
+              </li>
+              <li>
+                Automate operations with Python and shell scripts to reduce
+                manual effort and improve efficiency.
+              </li>
+              <li>
+                Implement Infrastructure as Code using Terraform and Ansible for
+                provisioning and configuration management.
+              </li>
+              <li>
+                Support containerized workloads on Docker and Kubernetes,
+                including troubleshooting and performance monitoring.
+              </li>
+              <li>
+                Drive observability and incident response with Prometheus,
+                Grafana, alerting, RCA, and SLO/SLA metrics.
+              </li>
+            </ul>
           </div>
         </div>
       </div>
