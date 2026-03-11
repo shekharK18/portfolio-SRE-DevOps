@@ -6,9 +6,6 @@ const Landing = ({ children }: PropsWithChildren) => {
     <>
       <div className="landing-section" id="landingDiv">
         <div className="landing-container">
-          <div className="availability-banner" data-cursor="disable">
-            Open to SRE/DevOps roles · Hyderabad/Remote
-          </div>
           <div className="landing-intro">
             <h2>Hello! I'm</h2>
             <h1>
