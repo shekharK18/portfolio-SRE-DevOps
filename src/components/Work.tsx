@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import type { MouseEvent } from "react";
 import "./styles/Work.css";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
@@ -9,6 +10,11 @@ const projects = [
     title: "Reliance Foundation Hospital",
     category: "Healthcare Data Platform",
     tools: "Apache NiFi, Kafka, HDFS, Hive, Yarn, Ozone, Spark",
+    outcomes: [
+      "Improved ingestion reliability with early sensitive-data filtering.",
+      "Reduced pipeline bottlenecks through HA tuning and Spark optimizations.",
+      "Hardened storage resiliency across HDFS + Ozone clusters.",
+    ],
     status: "Stable",
     statusNote: "SLO 99.9%",
     metrics: [
@@ -29,6 +35,11 @@ const projects = [
     title: "Jio Smart Document Platform",
     category: "Document Intelligence",
     tools: "Azure Form Recognizer, PDF/Image parsing, JSON output",
+    outcomes: [
+      "Accelerated document processing with automated form extraction.",
+      "Improved data quality with structured JSON validation checks.",
+      "Stabilized high-volume workloads with tuned pipeline retries.",
+    ],
     status: "Stable",
     statusNote: "SLO 99.8%",
     metrics: [
@@ -49,6 +60,11 @@ const projects = [
     title: "Jio Device Heartbeat",
     category: "Large-Scale Monitoring",
     tools: "33M+ devices, ~75B signals/day, proactive signal loss detection",
+    outcomes: [
+      "Scaled monitoring to 33M+ devices with proactive signal loss detection.",
+      "Automated guardrails to protect SLA during regional anomalies.",
+      "Improved MTTR with faster alerting and correlation workflows.",
+    ],
     status: "Stable",
     statusNote: "Zero downtime focus",
     metrics: [
@@ -71,6 +87,9 @@ const Work = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [panelMode, setPanelMode] = useState<PanelMode>("overview");
+  const [expandedCases, setExpandedCases] = useState<Record<number, boolean>>(
+    {}
+  );
 
   const goToSlide = useCallback(
     (index: number) => {
@@ -94,6 +113,25 @@ const Work = () => {
       currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
     goToSlide(newIndex);
   }, [currentIndex, goToSlide]);
+
+  const toggleCaseStudy = (index: number) => {
+    setExpandedCases((prev) => ({ ...prev, [index]: !prev[index] }));
+  };
+
+  const handlePanelMove = (event: MouseEvent<HTMLDivElement>) => {
+    const panel = event.currentTarget;
+    const rect = panel.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    panel.style.setProperty("--parallax-x", x.toFixed(2));
+    panel.style.setProperty("--parallax-y", y.toFixed(2));
+  };
+
+  const resetPanelMove = (event: MouseEvent<HTMLDivElement>) => {
+    const panel = event.currentTarget;
+    panel.style.setProperty("--parallax-x", "0");
+    panel.style.setProperty("--parallax-y", "0");
+  };
 
   return (
     <div className="work-section" id="work">
@@ -145,9 +183,37 @@ const Work = () => {
                           <span className="tools-label">Tools & Features</span>
                           <p>{project.tools}</p>
                         </div>
+                        <div className="case-study">
+                          <button
+                            className="case-toggle"
+                            onClick={() => toggleCaseStudy(index)}
+                            aria-expanded={!!expandedCases[index]}
+                            aria-controls={`case-${index}`}
+                            data-cursor="disable"
+                          >
+                            Case Study
+                          </button>
+                          <div
+                            id={`case-${index}`}
+                            className={`case-body ${expandedCases[index] ? "case-open" : ""
+                              }`}
+                          >
+                            <ul>
+                              {project.outcomes.map((outcome, outcomeIndex) => (
+                                <li key={outcomeIndex}>{outcome}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div className="ops-panel" aria-live="polite">
+                    <div
+                      className="ops-panel"
+                      aria-live="polite"
+                      onMouseMove={handlePanelMove}
+                      onMouseLeave={resetPanelMove}
+                    >
+                      <div className="ops-panel-bg" aria-hidden="true"></div>
                       <div className="ops-panel-header">
                         <div>
                           <h5>Ops Console</h5>
@@ -225,6 +291,14 @@ const Work = () => {
                 data-cursor="disable"
               />
             ))}
+          </div>
+          <div className="carousel-progress" aria-hidden="true">
+            <div
+              className="carousel-progress-fill"
+              style={{
+                width: `${((currentIndex + 1) / projects.length) * 100}%`,
+              }}
+            />
           </div>
         </div>
       </div>

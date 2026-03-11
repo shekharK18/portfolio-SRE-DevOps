@@ -28,19 +28,22 @@ const Education = () => {
   return (
     <div className="education-section section-container" id="education">
       <h2>Education</h2>
-      <div className="education-grid">
+      <div className="education-timeline">
         {educationEntries.map((entry) => (
-          <div className="education-card" key={entry.degree}>
-            <div className="education-main">
-              <div className="education-details">
-                <h4>{entry.degree}</h4>
-                <h5>{entry.institute}</h5>
+          <div className="education-item" key={entry.degree}>
+            <span className="education-dot" aria-hidden="true"></span>
+            <div className="education-card">
+              <div className="education-main">
+                <div className="education-details">
+                  <h4>{entry.degree}</h4>
+                  <h5>{entry.institute}</h5>
+                </div>
+                <span className="education-date">{entry.date}</span>
               </div>
-              <span className="education-date">{entry.date}</span>
-            </div>
-            <div className="education-meta">
-              <span>{entry.location}</span>
-              <span>{entry.grade}</span>
+              <div className="education-meta">
+                <span>{entry.location}</span>
+                <span>{entry.grade}</span>
+              </div>
             </div>
           </div>
         ))}

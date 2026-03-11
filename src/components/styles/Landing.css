@@ -175,6 +175,25 @@
   left: 0;
 }
 
+.availability-banner {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(94, 234, 212, 0.14);
+  border: 1px solid rgba(94, 234, 212, 0.3);
+  color: #bff7ee;
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-weight: 500;
+  z-index: 10;
+}
+
 .landing-intro h2 {
   margin: 0;
   color: var(--accentColor);
@@ -419,6 +438,14 @@ h2.landing-info-h2 {
     right: auto;
     transform: none;
     width: 100%;
+  }
+
+  .availability-banner {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 12px;
+    align-self: center;
   }
 
   .landing-intro h2 {

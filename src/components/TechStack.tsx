@@ -11,17 +11,17 @@ import {
 } from "@react-three/rapier";
 
 const textureLoader = new THREE.TextureLoader();
-const imageUrls = [
-  "/images/azure.svg",
-  "/images/aws.svg",
-  "/images/vnet.svg",
-  "/images/vpc.svg",
-  "/images/terraform.svg",
-  "/images/ansible.svg",
-  "/images/docker.svg",
-  "/images/kubernetes.svg",
+const techIcons = [
+  { src: "/images/azure.svg", label: "Azure" },
+  { src: "/images/aws.svg", label: "AWS" },
+  { src: "/images/vnet.svg", label: "Azure VNet" },
+  { src: "/images/vpc.svg", label: "AWS VPC" },
+  { src: "/images/terraform.svg", label: "Terraform" },
+  { src: "/images/ansible.svg", label: "Ansible" },
+  { src: "/images/docker.svg", label: "Docker" },
+  { src: "/images/kubernetes.svg", label: "Kubernetes" },
 ];
-const textures = imageUrls.map((url) => textureLoader.load(url));
+const textures = techIcons.map((icon) => textureLoader.load(icon.src));
 
 const sphereGeometry = new THREE.SphereGeometry(1, 22, 22);
 
@@ -45,6 +45,7 @@ function SphereGeo({
   isActive,
 }: SphereProps) {
   const api = useRef<RapierRigidBody | null>(null);
+  const localMaterial = useMemo(() => material.clone(), [material]);
 
   useFrame((_state, delta) => {
     if (!isActive) return;
@@ -83,8 +84,14 @@ function SphereGeo({
         receiveShadow={false}
         scale={scale}
         geometry={sphereGeometry}
-        material={material}
+        material={localMaterial}
         rotation={[0.3, 1, 1]}
+        onPointerOver={() => {
+          localMaterial.emissiveIntensity = 0.7;
+        }}
+        onPointerOut={() => {
+          localMaterial.emissiveIntensity = 0.25;
+        }}
       />
     </RigidBody>
   );
@@ -207,6 +214,14 @@ const TechStack = () => {
           environmentRotation={[0, 4, 2]}
         />
       </Canvas>
+      <div className="techstack-legend">
+        {techIcons.map((icon) => (
+          <div className="techstack-legend-item" key={icon.label}>
+            <img src={icon.src} alt={icon.label} loading="lazy" />
+            <span>{icon.label}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

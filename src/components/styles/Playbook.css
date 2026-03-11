@@ -1,0 +1,100 @@
+.playbook-section {
+  margin: auto;
+  padding: 90px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.playbook-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 50px;
+}
+
+.playbook-header h2 {
+  font-size: 60px;
+  font-weight: 500;
+  margin: 0 0 14px;
+}
+
+.playbook-header p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 300;
+  color: #b4b4b4;
+}
+
+.playbook-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.playbook-card {
+  background: linear-gradient(160deg, rgba(15, 23, 42, 0.7), rgba(10, 10, 10, 0.4));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 260px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.playbook-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(94, 234, 212, 0.4);
+}
+
+.playbook-card-header h4 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.playbook-card-header span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  opacity: 0.6;
+}
+
+.playbook-card ul {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #cbd5e1;
+  font-weight: 200;
+  font-size: 14px;
+}
+
+.playbook-card li::marker {
+  color: var(--accentColor);
+}
+
+@media only screen and (max-width: 1200px) {
+  .playbook-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .playbook-section {
+    padding: 60px 0;
+  }
+
+  .playbook-header {
+    text-align: left;
+  }
+
+  .playbook-header h2 {
+    font-size: 40px;
+  }
+
+  .playbook-grid {
+    grid-template-columns: 1fr;
+  }
+}

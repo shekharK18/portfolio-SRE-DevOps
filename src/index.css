@@ -106,11 +106,13 @@ body {
 .techstack {
   width: 100%;
   position: relative;
-  overflow: clip;
-  height: var(--vh);
+  overflow: visible;
+  height: auto;
+  min-height: var(--vh);
   margin: auto;
   margin-top: 50px;
-  margin-bottom: -100px;
+  margin-bottom: -40px;
+  padding-bottom: 60px;
 }
 
 .techstack h2 {
@@ -122,6 +124,53 @@ body {
   left: 0;
   font-weight: 400;
   text-transform: uppercase;
+}
+
+.tech-canvas {
+  height: 70vh;
+  min-height: 420px;
+}
+
+.techstack-legend {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  width: min(900px, 90%);
+  margin: 0 auto 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.techstack-legend-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.techstack-legend-item img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(94, 234, 212, 0.2));
+}
+
+.techstack-legend-item span {
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  opacity: 0.8;
+  text-align: center;
+}
+
+.techstack-legend-item:hover {
+  transform: translateY(-4px);
+  border-color: rgba(94, 234, 212, 0.45);
+  box-shadow: 0 0 24px rgba(94, 234, 212, 0.2);
 }
 
 @media screen and (min-width: 768px) {
@@ -149,5 +198,10 @@ body {
   .tech-canvas {
     height: 60vh;
     min-height: 320px;
+  }
+
+  .techstack-legend {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-bottom: 20px;
   }
 }
