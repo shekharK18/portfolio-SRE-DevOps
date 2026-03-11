@@ -210,7 +210,7 @@ const TechStack = () => {
     },
     {
       label: "KQL",
-      icon: "https://api.iconify.design/simple-icons:kibana.svg?color=%23ffffff",
+      icon: "https://cloud-icons.onemodel.app/azure/analytics/10145-icon-service-Azure-Data-Explorer-Clusters.svg",
     },
     {
       label: "Python",
@@ -279,7 +279,7 @@ const TechStack = () => {
       </div>
       <div className="techstack-tags">
         {extraTags.map((tag) => (
-          <div className="techstack-tag-card" key={tag.label}>
+          <div className="techstack-legend-item" key={tag.label}>
             <img src={tag.icon} alt={`${tag.label} logo`} loading="lazy" />
             <span>{tag.label}</span>
           </div>
