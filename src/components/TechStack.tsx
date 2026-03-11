@@ -235,6 +235,20 @@ const TechStack = () => {
     <div className="techstack">
       <h2> My Techstack</h2>
 
+      <div className="techstack-legend">
+        {techIcons.map((icon) => (
+          <div className="techstack-legend-item" key={icon.label}>
+            <img src={icon.src} alt={icon.label} loading="lazy" />
+            <span>{icon.label}</span>
+          </div>
+        ))}
+      </div>
+      <div className="techstack-tags">
+        {extraTags.map((tag) => (
+          <span key={tag}>{tag}</span>
+        ))}
+      </div>
+
       <Canvas
         dpr={[1, 1.25]}
         gl={{
@@ -278,19 +292,6 @@ const TechStack = () => {
           environmentRotation={[0, 4, 2]}
         />
       </Canvas>
-      <div className="techstack-legend">
-        {techIcons.map((icon) => (
-          <div className="techstack-legend-item" key={icon.label}>
-            <img src={icon.src} alt={icon.label} loading="lazy" />
-            <span>{icon.label}</span>
-          </div>
-        ))}
-      </div>
-      <div className="techstack-tags">
-        {extraTags.map((tag) => (
-          <span key={tag}>{tag}</span>
-        ))}
-      </div>
     </div>
   );
 };
