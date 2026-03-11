@@ -28,10 +28,10 @@ const techIcons = [
 ];
 const textures = techIcons.map((icon) => textureLoader.load(icon.src));
 
-const sphereGeometry = new THREE.SphereGeometry(1.6, 28, 28);
+const sphereGeometry = new THREE.SphereGeometry(1.8, 28, 28);
 
 const spheres = [...Array(24)].map(() => ({
-  scale: [1.2, 1.3, 1.4, 1.5, 1.6][Math.floor(Math.random() * 5)],
+  scale: [1.3, 1.4, 1.5, 1.6, 1.7][Math.floor(Math.random() * 5)],
 }));
 
 type SphereProps = {
@@ -60,9 +60,9 @@ function SphereGeo({
       .normalize()
       .multiply(
         new THREE.Vector3(
-          -50 * delta * scale,
-          -150 * delta * scale,
-          -50 * delta * scale
+          -45 * delta * scale,
+          -90 * delta * scale,
+          -45 * delta * scale
         )
       );
 
@@ -74,11 +74,11 @@ function SphereGeo({
       linearDamping={0.75}
       angularDamping={0.15}
       friction={0.2}
-      position={[r(22), r(22) - 25, r(22) - 10]}
+      position={[r(26), r(26) - 8, r(26) - 8]}
       ref={api}
       colliders={false}
     >
-      <BallCollider args={[scale]} />
+      <BallCollider args={[1.8 * scale]} />
       <CylinderCollider
         rotation={[Math.PI / 2, 0, 0]}
         position={[0, 0, 1.2 * scale]}
