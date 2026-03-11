@@ -28,10 +28,10 @@ const techIcons = [
 ];
 const textures = techIcons.map((icon) => textureLoader.load(icon.src));
 
-const sphereGeometry = new THREE.SphereGeometry(1.2, 24, 24);
+const sphereGeometry = new THREE.SphereGeometry(1.6, 28, 28);
 
 const spheres = [...Array(24)].map(() => ({
-  scale: [1.0, 1.1, 1.2, 1.3, 1.4][Math.floor(Math.random() * 5)],
+  scale: [1.2, 1.3, 1.4, 1.5, 1.6][Math.floor(Math.random() * 5)],
 }));
 
 type SphereProps = {
@@ -130,7 +130,7 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
       colliders={false}
       ref={ref}
     >
-      <BallCollider args={[2.4]} />
+      <BallCollider args={[3]} />
     </RigidBody>
   );
 }
@@ -201,7 +201,7 @@ const TechStack = () => {
           antialias: false,
           powerPreference: "high-performance",
         }}
-        camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
+        camera={{ position: [0, 0, 16], fov: 32.5, near: 1, far: 100 }}
         onCreated={(state) => (state.gl.toneMappingExposure = 1.3)}
         className="tech-canvas"
       >
