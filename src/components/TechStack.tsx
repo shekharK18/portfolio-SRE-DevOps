@@ -63,9 +63,9 @@ function SphereGeo({
       .normalize()
       .multiply(
         new THREE.Vector3(
-          -26 * delta * scale,
-          -36 * delta * scale,
-          -26 * delta * scale
+          -30 * delta * scale,
+          -42 * delta * scale,
+          -30 * delta * scale
         )
       );
 
@@ -74,10 +74,10 @@ function SphereGeo({
 
   return (
     <RigidBody
-      linearDamping={0.3}
-      angularDamping={0.06}
-      friction={0.15}
-      position={[r(26), r(18) - 8, r(20)]}
+      linearDamping={0.28}
+      angularDamping={0.05}
+      friction={0.12}
+      position={[r(30), r(22) - 8, r(24)]}
       ref={api}
       colliders={false}
     >
@@ -121,7 +121,7 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
         (pointer.y * viewport.height) / 2,
         0
       ),
-      0.6
+      0.9
     );
     ref.current?.setNextKinematicTranslation(targetVec);
   });
@@ -140,9 +140,9 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
 
 const Bounds = () => {
   const bounds = {
-    x: 22,
-    y: 12,
-    z: 16,
+    x: 26,
+    y: 14,
+    z: 20,
     thickness: 0.6,
     centerY: -8,
     centerZ: 0,
@@ -258,7 +258,7 @@ const TechStack = () => {
           antialias: false,
           powerPreference: "high-performance",
         }}
-        camera={{ position: [0, 0, 26], fov: 38, near: 1, far: 140 }}
+        camera={{ position: [0, 0, 30], fov: 42, near: 1, far: 160 }}
         onCreated={(state) => {
           state.gl.toneMappingExposure = 1.3;
           state.camera.lookAt(0, -8, 0);
