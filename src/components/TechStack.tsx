@@ -190,41 +190,42 @@ const TechStack = () => {
   const extraTags = [
     {
       label: "Azure DevOps",
-      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/azure-devops.svg",
+      src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/azure-devops.svg",
     },
     {
       label: "Git",
-      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/git.svg",
+      src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/git.svg",
     },
     {
       label: "Grafana",
-      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/grafana.svg",
+      src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/grafana.svg",
     },
     {
       label: "Azure Monitor",
-      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/azure-monitor.svg",
+      src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/azure-monitor.svg",
     },
     {
       label: "AWS CloudWatch",
-      icon: "https://www.awsicon.com/static/images/Service-Icons/Management-Governance/64/svg/CloudWatch.svg",
+      src: "https://www.awsicon.com/static/images/Service-Icons/Management-Governance/64/svg/CloudWatch.svg",
     },
     {
       label: "KQL",
-      icon: "https://cloud-icons.onemodel.app/azure/analytics/10145-icon-service-Azure-Data-Explorer-Clusters.svg",
+      src: "https://cloud-icons.onemodel.app/azure/analytics/10145-icon-service-Azure-Data-Explorer-Clusters.svg",
     },
     {
       label: "Python",
-      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/python.svg",
+      src: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/python.svg",
     },
     {
       label: "Shell Scripting",
-      icon: "https://cdn.simpleicons.org/gnubash/FFFFFF",
+      src: "https://cdn.simpleicons.org/gnubash/FFFFFF",
     },
     {
       label: "Aerospike",
-      icon: "https://upload.wikimedia.org/wikipedia/commons/9/92/Aerospike_logo_2012.svg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/9/92/Aerospike_logo_2012.svg",
     },
   ];
+  const allTechCards = [...techIcons, ...extraTags];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -270,18 +271,10 @@ const TechStack = () => {
       <h2> My Techstack</h2>
 
       <div className="techstack-legend">
-        {techIcons.map((icon) => (
+        {allTechCards.map((icon) => (
           <div className="techstack-legend-item" key={icon.label}>
             <img src={icon.src} alt={icon.label} loading="lazy" />
             <span>{icon.label}</span>
-          </div>
-        ))}
-      </div>
-      <div className="techstack-tags">
-        {extraTags.map((tag) => (
-          <div className="techstack-legend-item" key={tag.label}>
-            <img src={tag.icon} alt={`${tag.label} logo`} loading="lazy" />
-            <span>{tag.label}</span>
           </div>
         ))}
       </div>
