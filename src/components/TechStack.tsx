@@ -74,8 +74,8 @@ function SphereGeo({
 
   return (
     <RigidBody
-      linearDamping={0.75}
-      angularDamping={0.15}
+      linearDamping={0.55}
+      angularDamping={0.1}
       friction={0.2}
       position={[r(16), r(10) - 12, r(12)]}
       ref={api}
@@ -121,7 +121,7 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
         (pointer.y * viewport.height) / 2,
         0
       ),
-      0.4
+      0.65
     );
     ref.current?.setNextKinematicTranslation(targetVec);
   });
@@ -133,7 +133,7 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
       colliders={false}
       ref={ref}
     >
-      <BallCollider args={[3.2]} />
+      <BallCollider args={[4]} />
     </RigidBody>
   );
 }
