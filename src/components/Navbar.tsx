@@ -45,9 +45,6 @@ const Navbar = () => {
         <a href="/#" className="navbar-title" data-cursor="disable">
           SK
         </a>
-        <a href="#about" className="navbar-connect" data-cursor="disable">
-          Welcome to my digital workspace
-        </a>
         <ul>
           <li>
             <a data-href="#about" href="#about">

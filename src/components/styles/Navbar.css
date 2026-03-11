@@ -31,16 +31,6 @@
   font-weight: 600;
   cursor: pointer;
 }
-.navbar-connect {
-  position: static;
-  display: none;
-  justify-self: center;
-  text-align: center;
-  font-size: 15px;
-  letter-spacing: 1px;
-  font-weight: 500;
-  white-space: nowrap;
-}
 .navbar-title {
   font-weight: 700;
   font-size: 14px;
@@ -76,9 +66,6 @@
     column-gap: 48px;
     font-size: 16px;
   }
-  .navbar-connect {
-    font-size: 16px;
-  }
   .navbar-title {
     font-size: 18px;
   }
@@ -86,10 +73,5 @@
 @media only screen and (min-width: 1600px) {
   .header ul {
     column-gap: 72px;
-  }
-}
-@media only screen and (min-width: 1400px) {
-  .navbar-connect {
-    display: block;
   }
 }

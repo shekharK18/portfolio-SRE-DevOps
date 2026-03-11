@@ -52,7 +52,7 @@ function SphereGeo({
 }: SphereProps) {
   const api = useRef<RapierRigidBody | null>(null);
   const localMaterial = useMemo(() => material.clone(), [material]);
-  const attractor = useMemo(() => new THREE.Vector3(0, -6, 0), []);
+  const attractor = useMemo(() => new THREE.Vector3(0, -10, 0), []);
 
   useFrame((_state, delta) => {
     if (!isActive) return;
@@ -63,9 +63,9 @@ function SphereGeo({
       .normalize()
       .multiply(
         new THREE.Vector3(
-          -14 * delta * scale,
-          -22 * delta * scale,
-          -14 * delta * scale
+          -12 * delta * scale,
+          -18 * delta * scale,
+          -12 * delta * scale
         )
       );
 
@@ -77,7 +77,7 @@ function SphereGeo({
       linearDamping={0.75}
       angularDamping={0.15}
       friction={0.2}
-      position={[r(18), r(12) - 6, r(14)]}
+      position={[r(16), r(10) - 10, r(12)]}
       ref={api}
       colliders={false}
     >
@@ -140,11 +140,11 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
 
 const Bounds = () => {
   const bounds = {
-    x: 16,
-    y: 10,
-    z: 12,
+    x: 14,
+    y: 8,
+    z: 11,
     thickness: 0.6,
-    centerY: -6,
+    centerY: -10,
     centerZ: 0,
   };
 
@@ -244,8 +244,12 @@ const TechStack = () => {
           antialias: false,
           powerPreference: "high-performance",
         }}
-        camera={{ position: [0, 2, 24], fov: 32.5, near: 1, far: 100 }}
-        onCreated={(state) => (state.gl.toneMappingExposure = 1.3)}
+        camera={{ position: [0, 4, 24], fov: 32.5, near: 1, far: 100 }}
+        onCreated={(state) => {
+          state.gl.toneMappingExposure = 1.3;
+          state.camera.lookAt(0, -10, 0);
+          state.camera.updateProjectionMatrix();
+        }}
         className="tech-canvas"
       >
         <ambientLight intensity={0.85} />
