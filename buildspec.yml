@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     AWS_REGION: ap-south-1
-    IMAGE_REPO_NAME: shekhar-portfolio
+    IMAGE_REPO_NAME: project1-ecr
     IMAGE_TAG: latest
 
 phases:
