@@ -1,5 +1,11 @@
 version: 0.2
 
+env:
+  variables:
+    AWS_REGION: ap-south-1
+    IMAGE_REPO_NAME: shekhar-portfolio
+    IMAGE_TAG: latest
+
 phases:
   install:
     runtime-versions:
@@ -8,12 +14,24 @@ phases:
       - echo Installing dependencies...
       - npm install
 
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+      - REPOSITORY_URI=$ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_REPO_NAME
+      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+
   build:
     commands:
+      - echo Build started on `date`
       - echo Building the app...
       - npm run build
+      - echo Building Docker image...
+      - docker build -t $IMAGE_REPO_NAME .
+      - docker tag $IMAGE_REPO_NAME:latest $REPOSITORY_URI:$IMAGE_TAG
 
-artifacts:
-  files:
-    - '**/*'
-  base-directory: build
+  post_build:
+    commands:
+      - echo Pushing Docker image to ECR...
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo Build completed on `date`
